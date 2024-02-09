@@ -1,0 +1,17 @@
+{
+  /*
+   | This file is automatically updated by ModManifestBuilder
+   | when the project is compiled.
+   | 
+   | Changes made to this file may be overwritten.
+   | 
+   */
+  "$schema": "https://smapi.io/schemas/manifest.json",
+  "UniqueID": "tlitookilakin.extendedFarming",
+  "Name": "Extended Farming",
+  "Author": "Tlitookilakin",
+  "Version": "1.0.0-Debug",
+  "Description": "Extends the functionality of stardew's data assets",
+  "MinimumApiVersion": "4.0.0-alpha.20240129+f58bcb8fb4eb4a0cbfd1085baf400d922895ca9c",
+  "EntryDll": "ExtendedFarming.dll"
+}
