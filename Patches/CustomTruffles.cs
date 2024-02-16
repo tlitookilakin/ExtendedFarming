@@ -107,6 +107,9 @@ namespace ExtendedFarming.Patches
 			if (original)
 				return true;
 
+			if (animal.modData.ContainsKey(DataKeys.TRUFFLE_CACHE))
+				return true;
+
 			var item = ModUtilities.GetDugItem(animal);
 
 			if (item is null)
