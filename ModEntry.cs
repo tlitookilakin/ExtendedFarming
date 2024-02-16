@@ -27,6 +27,7 @@ namespace ExtendedFarming
 		private void Patch(Harmony harmony)
 		{
 			PreserveType.Apply(harmony, Monitor, Helper);
+			CustomTruffles.Apply(harmony, Monitor, Helper);
 		}
 	}
 }

@@ -19,7 +19,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="i18n\" />
+		<None Include="i18n" />
 		<Using Include="StardewValley.Object" Alias="SObject" />
 	</ItemGroup>
 

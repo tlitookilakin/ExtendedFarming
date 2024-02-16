@@ -18,6 +18,7 @@ namespace ExtendedFarming.Framework
 			this.helper = helper;
 		}
 
+		/// <inheritdoc/>
 		public Item? CreateFlavoredItem(string PreservedItemID, SObject? PreserveFlavor)
 		{
 			PreservedItemID = int.TryParse(PreservedItemID, out _) ? "(O)" + PreservedItemID : PreservedItemID;

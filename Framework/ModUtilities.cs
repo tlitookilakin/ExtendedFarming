@@ -1,12 +1,16 @@
 ﻿using StardewValley.GameData.Objects;
 using StardewValley.ItemTypeDefinitions;
 using StardewValley;
+using System.Reflection;
 
 namespace ExtendedFarming.Framework
 {
-	internal class ModUtilities
+	internal static class ModUtilities
 	{
-		internal static Item? CreateFlavoredItem(ItemMetadata metadata, SObject? PreserveFlavor, out string error)
+		public static readonly BindingFlags BINDING_ALL = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
+		public static readonly BindingFlags BINDING_ALL_DECLARED = BINDING_ALL | BindingFlags.DeclaredOnly;
+
+		internal static Item? CreateFlavoredItem(ItemMetadata metadata, SObject? PreserveFlavor, out string? error)
 		{
 			error = null;
 
@@ -47,6 +51,19 @@ namespace ExtendedFarming.Framework
 				output.Price = (int)(PreserveFlavor.Price * mul) + add;
 
 			return output;
+		}
+
+		internal static string? GetDugItem(FarmAnimal animal)
+		{
+			var data = animal.GetAnimalData();
+
+			if (data is null || data.CustomFields is null)
+				return null;
+
+			if (!data.CustomFields.TryGetValue(DataKeys.TRUFFLE_ID, out var truffle_id))
+				return null;
+
+			return truffle_id;
 		}
 	}
 }
