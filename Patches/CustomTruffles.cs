@@ -3,6 +3,7 @@ using HarmonyLib;
 using Netcode;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Extensions;
 using System.Reflection.Emit;
 
 namespace ExtendedFarming.Patches
@@ -121,10 +122,17 @@ namespace ExtendedFarming.Patches
 
 		public static string GetCachedItem(string original, FarmAnimal animal)
 		{
-			if (animal.modData.TryGetValue(DataKeys.TRUFFLE_CACHE, out var id))
-				return id;
+			if (!animal.modData.TryGetValue(DataKeys.TRUFFLE_CACHE, out var ids))
+				return original;
 
-			return original;
+			var split = ids.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+
+			return split.Length switch
+			{
+				0 => "-1",
+				1 => split[0],
+				_ => Game1.random.ChooseFrom(split)
+			};
 		}
 
 		public static bool TryFlagAnimalDoneDigging(FarmAnimal animal)
